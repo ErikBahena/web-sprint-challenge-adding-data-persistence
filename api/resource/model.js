@@ -6,11 +6,11 @@ const find = async () => {
 };
 
 const findById = async (resource_id) => {
-  return await db("resources").where({ resource_id });
+  return await db("resources").where({ resource_id }).first();
 };
 
 const create = async (newResource) => {
-  const [newResourceId] = db("resources").insert(newResource);
+  const [newResourceId] = await db("resources").insert(newResource);
 
   return findById(newResourceId);
 };
