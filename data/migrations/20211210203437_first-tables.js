@@ -7,15 +7,15 @@ exports.up = async function (knex) {
       table.integer("project_completed").defaultTo(0);
     })
     .createTable("resources", (table) => {
-      table.increments("resources_id");
-      table.string("resources_name", 50).notNullable().unique();
-      table.integer("resource_description", 250);
+      table.increments("resource_id");
+      table.string("resource_name", 50).notNullable().unique();
+      table.string("resource_description", 250);
     })
     .createTable("tasks", (table) => {
       table.increments("task_id");
       table.string("task_description", 250).notNullable();
       table.string("task_notes", 250);
-      table.string("task_completed").defaultTo(0);
+      table.integer("task_completed").defaultTo(0);
 
       table
         .integer("project_id")

@@ -13,12 +13,16 @@ const find = async () => {
 };
 
 const findById = async (project_id) => {
-  return await db("projects").where({ project_id });
+  const project = await db("projects").where("project_id", project_id).first();
+
+  if (project.project_completed === 0) project.project_completed = false;
+  else project.project_completed = true;
+
+  return project;
 };
 
 const create = async (newProject) => {
-  const [newProjectId] = db("projects").insert(newProject);
-
+  const [newProjectId] = await db("projects").insert(newProject);
   return findById(newProjectId);
 };
 
