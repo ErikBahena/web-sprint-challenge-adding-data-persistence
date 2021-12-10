@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  ResourceTasksModel.create(req.body)
+  TasksModel.create(req.body)
     .then((newTask) => res.status(200).json(newTask))
     .catch(next);
 });
