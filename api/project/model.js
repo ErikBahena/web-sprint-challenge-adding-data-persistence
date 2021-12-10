@@ -2,7 +2,14 @@
 const db = require("../../data/dbConfig");
 
 const find = async () => {
-  return await db("projects");
+  const projects = await db("projects");
+
+  projects.forEach((project) => {
+    if (project.project_completed === 0) project.project_completed = false;
+    else project.project_completed = true;
+  });
+
+  return projects;
 };
 
 const findById = async (project_id) => {

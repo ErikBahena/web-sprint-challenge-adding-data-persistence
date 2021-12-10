@@ -4,7 +4,7 @@ const server = express();
 server.use(express.json());
 
 const projectRouter = require("./project/router");
-const resourceRouter = require("./resource/model");
+const resourceRouter = require("./resource/router");
 const taskRouter = require("./task/router");
 
 server.use("/api/projects", projectRouter);

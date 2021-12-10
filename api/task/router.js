@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   ResourceTasksModel.create(req.body)
-    .then((newResource) => res.status(200).json(newResource))
+    .then((newTask) => res.status(200).json(newTask))
     .catch(next);
 });
 
